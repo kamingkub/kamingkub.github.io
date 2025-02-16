@@ -260,6 +260,7 @@
         function checkAllMatched() {
             const visible = document.querySelectorAll('.number-container:not([style*="display: none"])');
             if (visible.length === 0) showCelebration();
+            playSuccessSound();
         }
 
         function drop(ev, expectedNumber) {
