@@ -20,17 +20,14 @@
 
         /* Title Styling */
         .title {
-          font-size: 30px;
-          font-weight: bold;
-          color: white; /* Text color */
-          background: linear-gradient(to bottom, #ff7b00, #ff4e50); /* Complementary gradient background */
-          padding: 10px 20px; /* Adds some padding around the text */
-          border-radius: 10px; /* Optional: rounds the corners of the background */
-          text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white; /* Text color */
+            background: linear-gradient(to bottom, #ff7b00, #ff4e50); /* Complementary gradient background */
+            padding: 10px 20px; /* Adds some padding around the text */
+            border-radius: 10px; /* Optional: rounds the corners of the background */
+            text-align: center;
         }
-
-
-
 
         /* Bottom Layer with a wavy background */
         body::before {
@@ -51,12 +48,12 @@
             width: 80%;
             height: 68%;
             justify-content: space-evenly;
-            align-items: 40%;
+            align-items: center; /* Adjusted from '40%' to 'center' for better alignment */
             background: rgba(255, 255, 255, 0.9);
             padding: 2%;
             border-radius: 20px;
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
+            overflow: auto; /* Adds both vertical and horizontal scrollbars */
         }
 
         /* Draggable Color Names (Left Side) */
