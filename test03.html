@@ -277,6 +277,7 @@
         function checkAllMatched() {
             const visibleContainers = document.querySelectorAll('.food-container:not([style*="display: none"])');
             if (visibleContainers.length === 0) showCelebration();
+            playSuccessSound();
         }
 
         function drop(ev, expectedFood) {
