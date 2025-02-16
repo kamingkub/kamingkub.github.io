@@ -216,6 +216,38 @@
                 width: 100%;
             }
         }
+
+        /* Celebration Animation */
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .celebrate {
+            animation: celebrate 1s ease;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 50%, rgba(144,238,144,0.3) 100%);
+        }
+
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0;
+            animation: successFade 2s ease-out;
+            z-index: 1001;
+        }
+
+        @keyframes successFade {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            70% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        }
     </style>
 </head>
 <body>
@@ -263,6 +295,8 @@
 
     <script>
         let lastWrongDrop = null;
+        let matchedCount = 0;
+        const totalMatches = 6;
 
         function allowDrop(ev) {
             ev.preventDefault();
@@ -276,6 +310,33 @@
             }
         }
 
+        function playSuccessSound() {
+            const audio = new Audio('success.mp3');
+            audio.play();
+        }
+
+        function showCelebration() {
+            const celebration = document.createElement('div');
+            celebration.className = 'success-message';
+            celebration.textContent = 'Success!';
+            document.body.appendChild(celebration);
+            
+            document.querySelector('.main-container').classList.add('celebrate');
+            playSuccessSound();
+            
+            setTimeout(() => {
+                document.querySelector('.main-container').classList.remove('celebrate');
+                celebration.remove();
+            }, 2000);
+        }
+
+        function checkAllMatched() {
+            const visibleContainers = document.querySelectorAll('.color-container:not([style*="display: none"])');
+            if (visibleContainers.length === 0) {
+                showCelebration();
+            }
+        }
+
         function drop(ev, expectedColor) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
@@ -284,21 +345,16 @@
             var dropZone = ev.target.closest(".dropzone");
 
             if (draggedText === expectedColor) {
-                // Get parent container
                 const colorContainer = dropZone.closest('.color-container');
-                
-                // Add dragged element to dropzone
                 dropZone.appendChild(draggedElement);
                 dropZone.classList.add("correct");
                 draggedElement.classList.add("locked");
                 draggedElement.setAttribute("draggable", "false");
-
-                // Trigger vanish animation
                 colorContainer.classList.add('matched');
                 
-                // Hide element after animation
                 setTimeout(() => {
                     colorContainer.style.display = 'none';
+                    checkAllMatched();
                 }, 500);
             } else {
                 if (lastWrongDrop !== dropZone.id) {
