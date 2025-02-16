@@ -156,10 +156,27 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+        .theme-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .theme-button:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
-    <a href="next.html" class="theme-button">NEXT</a>
+    <a href="test02.html" class="theme-button">NEXT</a>
     <div class="title">Match Animals to Names</div>
     <div class="main-container">
         <!-- Left Panel - Draggable Animal Names -->
