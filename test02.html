@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numbers 1-5 Matching</title>
+    <title>Drag and Drop Numbers</title>
     <style>
-        /* Same styles as previous number version */
         * {
             box-sizing: border-box;
         }
@@ -52,13 +51,130 @@
             gap: 20px;
         }
 
-        /* Keep all other styles same as previous number version */
-        /* ... (copy all CSS styles from previous number example) ... */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 150px;
+            min-width: 120px;
+        }
+
+        .draggable {
+            width: 100%;
+            padding: 12px;
+            cursor: grab;
+            text-align: center;
+            border: 3px solid #333;
+            font-weight: bold;
+            font-size: clamp(14px, 2vw, 18px);
+            border-radius: 10px;
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .center-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .number-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-width: 80px;
+            height: 150px;
+            transition: all 0.3s;
+        }
+
+        .number-box {
+            width: 80%;
+            height: 60%;
+            border-radius: 15px;
+            border: 3px solid #333;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            background: #fff;
+        }
+
+        .dropzone {
+            width: 80%;
+            height: 40%;
+            border: 3px dashed #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .theme-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        @keyframes vanish {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .matched {
+            animation: vanish 0.5s ease forwards;
+            pointer-events: none;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0;
+            animation: successFade 2s ease-out;
+            z-index: 1001;
+        }
+
+        @keyframes successFade {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            70% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 24px; }
+            .main-container { flex-direction: column; width: 95%; margin-top: 60px; }
+            .left-panel { width: 100%; max-width: 300px; flex-direction: row; flex-wrap: wrap; }
+            .draggable { width: 45%; font-size: 14px; padding: 8px; }
+            .center-panel { grid-template-columns: repeat(2, 1fr); }
+            .theme-button { top: 20px; right: 20px; bottom: auto; }
+        }
     </style>
 </head>
 <body>
-    <a href="numbers_6_10.html" class="theme-button">NEXT</a>
-    <div class="title">Match Numbers 1-5</div>
+    <a href="test03.html" class="theme-button">NEXT</a>
+    <div class="title">Match Numbers to Words</div>
     <div class="main-container">
         <!-- Left Panel - Draggable Number Words -->
         <div class="left-panel" id="numberList">
@@ -67,6 +183,7 @@
             <div id="dragThree" class="draggable" draggable="true" ondragstart="drag(event)">Three</div>
             <div id="dragFour" class="draggable" draggable="true" ondragstart="drag(event)">Four</div>
             <div id="dragFive" class="draggable" draggable="true" ondragstart="drag(event)">Five</div>
+            <div id="dragSix" class="draggable" draggable="true" ondragstart="drag(event)">Six</div>
         </div>
 
         <!-- Right Panel - Number Boxes & Drop Zones -->
@@ -91,12 +208,17 @@
                 <div class="number-box">5</div>
                 <div id="dropFive" class="dropzone" ondrop="drop(event, 'Five')" ondragover="allowDrop(event)"></div>
             </div>
+            <div class="number-container">
+                <div class="number-box">6</div>
+                <div id="dropSix" class="dropzone" ondrop="drop(event, 'Six')" ondragover="allowDrop(event)"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Modified for 1-5
-        const totalMatches = 5;
+        let lastWrongDrop = null;
+        let matchedCount = 0;
+        const totalMatches = 6;
 
         function allowDrop(ev) {
             ev.preventDefault();
@@ -118,7 +240,7 @@
         function showCelebration() {
             const celebration = document.createElement('div');
             celebration.className = 'success-message';
-            celebration.textContent = 'Great Job!';
+            celebration.textContent = 'All Matched!';
             document.body.appendChild(celebration);
             
             setTimeout(() => {
