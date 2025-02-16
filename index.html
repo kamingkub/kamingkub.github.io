@@ -100,16 +100,53 @@
             align-items: center;
             width: 100%;
             min-width: 80px;
+            height: 150px; /* Added fixed height for color boxes */
         }
 
-        .color-box, .dropzone {
+        .color-box {
             width: 80%;
-            height: 60px;
+            height: 60%; /* Adjust color box proportion */
             border-radius: 15px;
-            margin: 5px 0;
+            border: 3px solid #333;
+            margin: 10px 0;
         }
 
-        /* Responsive Media Queries */
+        .dropzone {
+            width: 80%;
+            height: 40%; /* Adjust dropzone proportion */
+            border: 3px dashed #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: background 0.3s ease-in-out;
+        }
+
+        /* Color Classes */
+        .green { background-color: green; }
+        .red { background-color: red; }
+        .black { background-color: black; }
+        .yellow { background-color: yellow; }
+        .purple { background-color: purple; }
+        .blue { background-color: blue; }
+
+        /* Fixed Theme Button Positioning */
+        .theme-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+            z-index: 1000; /* Ensure it stays on top */
+        }
+
         @media (max-width: 768px) {
             .title {
                 font-size: 24px;
@@ -119,6 +156,7 @@
                 flex-direction: column;
                 width: 95%;
                 padding: 15px;
+                margin-top: 60px; /* Add space for button */
             }
 
             .left-panel {
@@ -138,6 +176,13 @@
             .center-panel {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .theme-button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                bottom: auto;
+            }
         }
 
         @media (max-width: 480px) {
@@ -145,17 +190,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .color-box, .dropzone {
-                height: 50px;
+            .color-container {
+                height: 120px;
             }
 
             .draggable {
                 width: 100%;
             }
         }
-
-        /* Existing styles remain the same below this point */
-        /* ... (keep all other existing styles as they are) ... */
     </style>
 </head>
 <body>
@@ -201,9 +243,8 @@
         </div>
     </div>
 
-    <!-- Play Theme Button -->
-    
     <script>
+        // Keep the original JavaScript code here
         let lastWrongDrop = null;
 
         function allowDrop(ev) {
@@ -250,6 +291,5 @@
 
         window.onload = shuffleColors;
     </script>
-
 </body>
 </html>
