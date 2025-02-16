@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numbers 6-10 Matching</title>
+    <title>Food Matching Game</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,7 +17,7 @@
             align-items: center;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(to bottom, #a8edea, #fed6e3);
+            background: linear-gradient(to bottom, #ffcc70, #ff8a80);
             position: relative;
             overflow-x: hidden;
         }
@@ -26,7 +26,7 @@
             font-size: 5vw;
             font-weight: bold;
             color: white;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            background: linear-gradient(to bottom, #ff7b00, #ff4e50);
             padding: 10px 20px;
             border-radius: 10px;
             text-align: center;
@@ -81,33 +81,48 @@
             max-width: 600px;
         }
 
-        .number-container {
+        .food-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
             min-width: 80px;
-            height: 150px;
+            height: 200px;
             transition: all 0.3s;
         }
 
-        .number-box {
-            width: 80%;
-            height: 60%;
+        .food-image {
+            width: 120px;
+            height: 120px;
             border-radius: 15px;
             border: 3px solid #333;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5em;
-            font-weight: bold;
-            background: white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pizza {
+            background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .burger {
+            background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .sushi {
+            background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .pasta {
+            background-image: url('https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .ice-cream {
+            background-image: url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
         }
 
         .dropzone {
             width: 80%;
-            height: 40%;
+            height: 40px;
             border: 3px dashed #333;
             border-radius: 10px;
             display: flex;
@@ -194,37 +209,39 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="theme-button">PREV</a>
-    <div class="title">Match Numbers 6-10</div>
+    <a href="index.html" class="theme-button">NEXT</a>
+    <div class="title">Match Food to Names</div>
     <div class="main-container">
-        <div class="left-panel" id="numberList">
-            <div id="dragSix" class="draggable" draggable="true" ondragstart="drag(event)">Six</div>
-            <div id="dragSeven" class="draggable" draggable="true" ondragstart="drag(event)">Seven</div>
-            <div id="dragEight" class="draggable" draggable="true" ondragstart="drag(event)">Eight</div>
-            <div id="dragNine" class="draggable" draggable="true" ondragstart="drag(event)">Nine</div>
-            <div id="dragTen" class="draggable" draggable="true" ondragstart="drag(event)">Ten</div>
+        <!-- Left Panel - Draggable Food Names -->
+        <div class="left-panel" id="foodList">
+            <div id="dragPizza" class="draggable" draggable="true" ondragstart="drag(event)">Pizza</div>
+            <div id="dragBurger" class="draggable" draggable="true" ondragstart="drag(event)">Burger</div>
+            <div id="dragSushi" class="draggable" draggable="true" ondragstart="drag(event)">Sushi</div>
+            <div id="dragPasta" class="draggable" draggable="true" ondragstart="drag(event)">Pasta</div>
+            <div id="dragIceCream" class="draggable" draggable="true" ondragstart="drag(event)">Ice Cream</div>
         </div>
 
+        <!-- Right Panel - Food Images & Drop Zones -->
         <div class="center-panel">
-            <div class="number-container">
-                <div class="number-box">6</div>
-                <div id="dropSix" class="dropzone" ondrop="drop(event, 'Six')" ondragover="allowDrop(event)"></div>
+            <div class="food-container">
+                <div class="food-image pizza"></div>
+                <div id="dropPizza" class="dropzone" ondrop="drop(event, 'Pizza')" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="number-container">
-                <div class="number-box">7</div>
-                <div id="dropSeven" class="dropzone" ondrop="drop(event, 'Seven')" ondragover="allowDrop(event)"></div>
+            <div class="food-container">
+                <div class="food-image burger"></div>
+                <div id="dropBurger" class="dropzone" ondrop="drop(event, 'Burger')" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="number-container">
-                <div class="number-box">8</div>
-                <div id="dropEight" class="dropzone" ondrop="drop(event, 'Eight')" ondragover="allowDrop(event)"></div>
+            <div class="food-container">
+                <div class="food-image sushi"></div>
+                <div id="dropSushi" class="dropzone" ondrop="drop(event, 'Sushi')" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="number-container">
-                <div class="number-box">9</div>
-                <div id="dropNine" class="dropzone" ondrop="drop(event, 'Nine')" ondragover="allowDrop(event)"></div>
+            <div class="food-container">
+                <div class="food-image pasta"></div>
+                <div id="dropPasta" class="dropzone" ondrop="drop(event, 'Pasta')" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="number-container">
-                <div class="number-box">10</div>
-                <div id="dropTen" class="dropzone" ondrop="drop(event, 'Ten')" ondragover="allowDrop(event)"></div>
+            <div class="food-container">
+                <div class="food-image ice-cream"></div>
+                <div id="dropIceCream" class="dropzone" ondrop="drop(event, 'Ice Cream')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
     </div>
@@ -252,47 +269,54 @@
         function showCelebration() {
             const celebration = document.createElement('div');
             celebration.className = 'success-message';
-            celebration.textContent = 'Excellent!';
+            celebration.textContent = 'Great Job!';
             document.body.appendChild(celebration);
             setTimeout(() => celebration.remove(), 2000);
         }
 
         function checkAllMatched() {
-            const visible = document.querySelectorAll('.number-container:not([style*="display: none"])');
-            if (visible.length === 0) showCelebration();
+            const visibleContainers = document.querySelectorAll('.food-container:not([style*="display: none"])');
+            if (visibleContainers.length === 0) showCelebration();
         }
 
-        function drop(ev, expectedNumber) {
+        function drop(ev, expectedFood) {
             ev.preventDefault();
             const data = ev.dataTransfer.getData("text");
             const draggedElement = document.getElementById(data);
+            const draggedText = draggedElement.innerText;
             const dropZone = ev.target.closest(".dropzone");
 
-            if (draggedElement.innerText === expectedNumber) {
-                const container = dropZone.closest('.number-container');
+            if (draggedText === expectedFood) {
+                const foodContainer = dropZone.closest('.food-container');
                 dropZone.appendChild(draggedElement);
+                dropZone.classList.add("correct");
                 draggedElement.classList.add("locked");
-                draggedElement.draggable = false;
-                container.classList.add('matched');
+                draggedElement.setAttribute("draggable", "false");
+                foodContainer.classList.add('matched');
+                
                 setTimeout(() => {
-                    container.style.display = 'none';
+                    foodContainer.style.display = 'none';
                     checkAllMatched();
                 }, 500);
             } else {
-                if (lastWrongDrop !== dropZone.id) alert("Try again!");
+                if (lastWrongDrop !== dropZone.id) {
+                    alert("Try again! That's not the right match.");
+                }
                 lastWrongDrop = dropZone.id;
                 document.getElementById(draggedElement.dataset.prevParent).appendChild(draggedElement);
             }
         }
 
-        function shuffleNumbers() {
-            const container = document.getElementById('numberList');
-            Array.from(container.children)
-                 .sort(() => Math.random() - 0.5)
-                 .forEach(node => container.appendChild(node));
+        function shuffleFood() {
+            const container = document.getElementById('foodList');
+            const items = Array.from(container.children);
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(items[j]);
+            }
         }
 
-        window.onload = shuffleNumbers;
+        window.onload = shuffleFood;
     </script>
 </body>
 </html>
