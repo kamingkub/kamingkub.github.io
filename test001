@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About Animals</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #f6d365, #fda085);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Gradient Background Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .animal-info {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        /* Title */
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* Animal Cards */
+        .animal-card {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .animal-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .animal-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animal-info-text {
+            font-size: 1.2rem;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Animal-Specific Styles */
+        .lion { background: #ffcc00; }
+        .elephant { background: #a8a8a8; }
+        .monkey { background: #b5651d; }
+        .dog { background: #d27f4a; }
+        .cat { background: #f5c3b2; }
+        .panda { background: #000000; }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            background: #ff6f61;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 111, 97, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animal Information Screen -->
+    <div class="animal-info">
+        <h1 class="title">Let's Learn About Animals!</h1>
+
+        <!-- Lion -->
+        <div class="animal-card">
+            <div class="animal-circle lion">🦁</div>
+            <div class="animal-info-text">
+                <strong>Lion</strong>: Lions are known as the kings of the jungle. They are strong, courageous, and social animals.
+            </div>
+        </div>
+
+        <!-- Elephant -->
+        <div class="animal-card">
+            <div class="animal-circle elephant">🐘</div>
+            <div class="animal-info-text">
+                <strong>Elephant</strong>: Elephants are the largest land animals on Earth. They are intelligent, have great memories, and live in family groups.
+            </div>
+        </div>
+
+        <!-- Monkey -->
+        <div class="animal-card">
+            <div class="animal-circle monkey">🐒</div>
+            <div class="animal-info-text">
+                <strong>Monkey</strong>: Monkeys are playful and curious creatures. They are often seen in jungles, using their tails to swing from trees.
+            </div>
+        </div>
+
+        <!-- Dog -->
+        <div class="animal-card">
+            <div class="animal-circle dog">🐕</div>
+            <div class="animal-info-text">
+                <strong>Dog</strong>: Dogs are loyal companions and have been domesticated by humans for thousands of years.
+            </div>
+        </div>
+
+        <!-- Cat -->
+        <div class="animal-card">
+            <div class="animal-circle cat">🐱</div>
+            <div class="animal-info-text">
+                <strong>Cat</strong>: Cats are independent and agile creatures. They are known for their playful behavior and purring sounds.
+            </div>
+        </div>
+
+        <!-- Panda -->
+        <div class="animal-card">
+            <div class="animal-circle panda">🐼</div>
+            <div class="animal-info-text">
+                <strong>Panda</strong>: Pandas are gentle creatures known for their black-and-white fur. They love eating bamboo.
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="test01.html" class="back-button">NEXT</a>
+    </div>
+</body>
+</html>
