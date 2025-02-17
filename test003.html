@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About Food</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #f6d365, #fda085);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Gradient Background Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .food-info {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        /* Title */
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* Food Cards */
+        .food-card {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .food-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .food-info-text {
+            font-size: 1.2rem;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Food-Specific Styles */
+        .sushi { background: #ff6347; }
+        .pizza { background: #f4a300; }
+        .pasta { background: #ffcc00; }
+        .burger { background: #d27f4a; }
+        .ice-cream { background: #f5c3b2; }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            background: #ff6f61;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 111, 97, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Food Information Screen -->
+    <div class="food-info">
+        <h1 class="title">Let's Learn About Food!</h1>
+
+        <!-- Sushi -->
+        <div class="food-card">
+            <div class="food-circle sushi">🍣</div>
+            <div class="food-info-text">
+                <strong>Sushi</strong>: Sushi is a traditional Japanese dish made with vinegared rice, seafood, and sometimes vegetables.
+            </div>
+        </div>
+
+        <!-- Pizza -->
+        <div class="food-card">
+            <div class="food-circle pizza">🍕</div>
+            <div class="food-info-text">
+                <strong>Pizza</strong>: Pizza is an Italian dish consisting of a usually round, flat base topped with sauce, cheese, and various toppings.
+            </div>
+        </div>
+
+        <!-- Pasta -->
+        <div class="food-card">
+            <div class="food-circle pasta">🍝</div>
+            <div class="food-info-text">
+                <strong>Pasta</strong>: Pasta is a traditional Italian food made from wheat flour and water, usually served with sauces.
+            </div>
+        </div>
+
+        <!-- Burger -->
+        <div class="food-card">
+            <div class="food-circle burger">🍔</div>
+            <div class="food-info-text">
+                <strong>Burger</strong>: A burger is a sandwich consisting of a cooked patty of ground meat, usually beef, served in a bun with various toppings.
+            </div>
+        </div>
+
+        <!-- Ice Cream -->
+        <div class="food-card">
+            <div class="food-circle ice-cream">🍦</div>
+            <div class="food-info-text">
+                <strong>Ice Cream</strong>: Ice cream is a sweet frozen food made from milk and cream, often combined with fruit, chocolate, or other flavorings.
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="test03.html" class="back-button">NEXT</a>
+    </div>
+</body>
+</html>
